@@ -1,0 +1,45 @@
+# Mẫu .gitignore cho dự án Unity
+
+# Thư mục build được tạo tự động
+/Builds/
+/Library/
+/Temp/
+
+# Các file metadata và cache
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.suo
+*.sln.DotSettings
+*.vspscc
+
+# Các file và thư mục khác
+/Assets/**/Editor/
+/Assets/**/Plugins/
+/Assets/**/Resources/
+/Assets/**/StreamingAssets/
+/Assets/**/Shaders/
+/Assets/**/Scripts/
+/Assets/**/Textures/
+/Assets/**/Materials/
+/Assets/**/Audio/
+/Assets/**/Models/
+/Assets/**/Animations/
+
+# Các file bản quyền và cấu hình cục bộ
+/ProjectSettings/ProjectVersion.txt
+/ProjectSettings/VCSettings.asset
+/ProjectSettings/GraphicsSettings.asset
+/ProjectSettings/InputManager.asset
+/ProjectSettings/TagManager.asset
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/NavMeshAreas.asset
+/ProjectSettings/PhysicsManager.asset
+
+# Các thư mục cache của IDE
+.idea/
+.vscode/
+.vs/
+/obj/
