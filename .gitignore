@@ -14,18 +14,6 @@
 *.sln.DotSettings
 *.vspscc
 
-# Các file và thư mục khác
-/Assets/**/Editor/
-/Assets/**/Plugins/
-/Assets/**/Resources/
-/Assets/**/StreamingAssets/
-/Assets/**/Shaders/
-/Assets/**/Textures/
-/Assets/**/Materials/
-/Assets/**/Audio/
-/Assets/**/Models/
-/Assets/**/Animations/
-
 # Các file bản quyền và cấu hình cục bộ
 /ProjectSettings/ProjectVersion.txt
 /ProjectSettings/VCSettings.asset
