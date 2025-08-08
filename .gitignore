@@ -6,7 +6,6 @@
 /Temp/
 
 # Các file metadata và cache
-*.csproj
 *.unityproj
 *.sln
 *.user
