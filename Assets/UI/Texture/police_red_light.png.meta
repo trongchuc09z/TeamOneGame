@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      police_red_light_0: -5338345969695371153
+      police_red_light_1: -3207291836321329642
+      police_red_light_2: 3898257665263806395
+      police_red_light_3: 7650931345636792790
+      police_red_light_4: -4068535240438708774
+      police_red_light_5: -790969773246860434
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tungtungKiller_0: -4447514126514485427
+      tungtungKiller_1: 2273148017545446764
+      tungtungKiller_2: -6215113502763532451
+      tungtungKiller_3: -2810930282067468412
+      tungtungKiller_4: -4099689633866849537
+      tungtungKiller_5: 8993163067506112729
+      tungtungKiller_6: -7693435798260996759
+      tungtungKiller_7: 8238172168228545643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

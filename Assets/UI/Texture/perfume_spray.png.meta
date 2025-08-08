@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      perfume_spray_0: -8568749909295447590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

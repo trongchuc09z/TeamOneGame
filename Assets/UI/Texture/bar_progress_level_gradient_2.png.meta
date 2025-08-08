@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bar_progress_level_gradient_2_0: -2827436153477444043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

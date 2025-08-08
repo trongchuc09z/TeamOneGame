@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      yoga_ball_1_0: 6147990040257397500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
