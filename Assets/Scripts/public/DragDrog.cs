@@ -58,25 +58,7 @@ public abstract class DragDrop : MonoBehaviour
             transform.position = mouseWorldPos + offset;
             //Debug.Log("OnDrag");
         }
-
-        //if (Input.GetMouseButtonUp(0) && isDragging)
-        //{
-        //    isDragging = false;
-        //    Debug.Log("EndDrag");
-        //    if (isMouseOver)
-        //    {
-        //        transform.gameObject.SetActive(false);
-        //    }
-        //    else
-        //    {
-        //        transform.position = posStart;
-        //    }
-        //}
     }
-
-    
-
-
     protected void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

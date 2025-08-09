@@ -1,33 +1,55 @@
 ﻿using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using static UnityEditor.Timeline.Actions.MenuPriority;
-
 public class junk_Fly : DragDrop
 {
-    protected virtual void Update()
+    [SerializeField] protected Transform newItem;
+    [SerializeField] protected Transform oldItem;
+    protected string itemName;
+
+    private void Start()
     {
-        Moving();
-        Fly();
+        LoadComponent();
     }
 
-    protected virtual void Fly()
+    private void Update()
     {
-        if (Input.GetMouseButtonUp(0) && isDragging)
+        Moving();
+        Postion();
+    }
+
+    protected void LoadComponent()
+    {
+        itemName = gameObject.name;
+        posStart = transform.position;
+        newItem = transform.Find(itemName + "_new");
+        if (newItem != null)
+            newItem.gameObject.SetActive(false);
+        oldItem = transform.Find(itemName + "_old");
+
+    }
+
+    protected void Postion()
+    {
+        if (Input.GetMouseButtonUp(0) && isDragging) // nếu nhả chuột trái và đang kéo
         {
             isDragging = false;
             Debug.Log("EndDrag");
             if (isMouseOver)
             {
                 Debug.Log("isMouseOver");
-                transform.gameObject.SetActive(false);
-
+                oldItem.gameObject.SetActive(false);
+                ActiveObject();
             }
             else
             {
-                // đang kéo và nhả chuột trái ra nhưng không trên Player
                 transform.position = posStart;
             }
         }
     }
 
+    protected void ActiveObject()
+    {
+        newItem.position = posStart;
+        newItem.gameObject.SetActive(true);
+    }
 }
