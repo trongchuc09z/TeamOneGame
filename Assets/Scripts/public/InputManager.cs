@@ -1,22 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InputManager : MonoBehaviour
-{ 
-    [SerializeField] protected float onFiring;
-    public static InputManager instance;
-    private void Awake()
+{
+    public float baseWidth = 1920f; // kích thước màn hình gốc bạn thiết kế
+    public float baseHeight = 1080f;
+
+    void Start()
     {
-        instance = this;
+        ScaleToScreen();
     }
 
-    private void Update()
+    void ScaleToScreen()
     {
-        InputMouseClick();
-    }
+        float screenRatioW = Screen.width / baseWidth;
+        float screenRatioH = Screen.height / baseHeight;
+        float scale = Mathf.Min(screenRatioW, screenRatioH); // giữ tỉ lệ
 
-    public float InputMouseClick()
-    {
-        onFiring = Input.GetAxis("Fire1"); 
-        return onFiring;
+        transform.localScale *= scale;
     }
 }

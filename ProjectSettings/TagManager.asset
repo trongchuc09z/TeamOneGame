@@ -55,5 +55,11 @@ TagManager:
   - name: Killer
     uniqueID: 3766519203
     locked: 0
+  - name: KillerLose
+    uniqueID: 1102945667
+    locked: 0
+  - name: Lose
+    uniqueID: 3533591351
+    locked: 0
   m_RenderingLayers:
   - Default

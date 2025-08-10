@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public SkeletonAnimation skeletonAnimation;
     public Slider timeSlider;
-    private float sliderTimer = 0f;
+    public float sliderTimer = 0f;
     [SerializeField] private float sliderDuration = 10f;
 
     private string currentAnimation = "";
@@ -47,8 +47,7 @@ public class PlayerController : MonoBehaviour
         else // >= 1.0f
         {
             nextAnimation = "idle_fart";
-            sliderTimer = 0f;
-            timeSlider.value = 0f;
+            GameManager.Instance.LoseGame(); // Gọi hàm LoseGame khi đạt 100%
         }
 
         // Chỉ set animation khi thay đổi trạng thái

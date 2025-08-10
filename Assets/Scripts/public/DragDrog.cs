@@ -1,73 +1,76 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public abstract class DragDrop : MonoBehaviour
+public class DragDrop : MonoBehaviour
 {
-    protected bool isDragging = false; // Biến để kiểm tra xem đối tượng có đang được kéo hay không
-    protected bool isMouseOver = false; // Biến để kiểm tra xem chuột có đang ở trên đối tượng hay không
-    protected Vector3 offset;
-    protected Rigidbody2D rb;
-    protected Collider2D col;
-    protected Vector2 posStart;
+    protected Vector3 posStart;       // vị trí ban đầu
+    protected bool isDragging = false;
+    protected bool isMouseOverPlayer = false;
 
-    void Awake()
+    [Header("Player Detect")]
+    public string playerTag = "Player"; // gán tag cho player để check
+
+    protected virtual void Start()
     {
-        AddCollider2D(); // Gọi hàm này trước
-        AddRigidbody2D();
-        posStart = transform.position;
+
     }
 
-    protected void AddRigidbody2D()
+    protected virtual void Update()
     {
-        if (this.rb != null) return;
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // Tắt trọng lực
-        
-    }
-
-    protected void AddCollider2D()
-    {
-        if (this.col != null) return;
-        col = GetComponent<Collider2D>();
-        if (col == null) // Kiểm tra nếu chưa có Collider2D
+        if (isDragging)
         {
-            // Tự động thêm một Collider2D vào
-            col = gameObject.AddComponent<BoxCollider2D>();
-            col.isTrigger = true; // Đặt là trigger để không can thiệp với vật lý
+            // Cập nhật vị trí theo chuột
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 10f; // khoảng cách từ camera đến object
+            transform.position = Camera.main.ScreenToWorldPoint(mousePos);
         }
     }
 
-    protected virtual void Moving()
+    protected virtual void OnMouseDown()
     {
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0; // đảm bảo ở mặt phẳng 2D
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
-            {
-                isDragging = true;
-                offset = transform.position - mouseWorldPos; // Tính offset
-                //Debug.Log("OnPointerDown");
-            }
-        }
-
-        if (Input.GetMouseButton(0) && isDragging)
-        {
-            transform.position = mouseWorldPos + offset;
-            //Debug.Log("OnDrag");
-        }
-    }
-    protected void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            isMouseOver = true; 
+        isDragging = true;
     }
 
-    protected void OnTriggerExit2D(Collider2D collision)
+    protected virtual void OnMouseUp()
     {
-        if (collision.CompareTag("Player"))
-            isMouseOver = false;
+        isDragging = false;
+
+        if (isMouseOverPlayer)
+        {
+            OnDropToPlayer();
+        }
+        else
+        {
+            OnDropFail();
+        }
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(playerTag))
+        {
+            isMouseOverPlayer = true;
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(playerTag))
+        {
+            isMouseOverPlayer = false;
+        }
+    }
+
+    /// <summary>
+    /// Override để xử lý khi thả trúng player
+    /// </summary>
+    protected virtual void OnDropToPlayer() { }
+
+    /// <summary>
+    /// Override để xử lý khi thả thất bại
+    /// </summary>
+    protected virtual void OnDropFail()
+    {
+        // Mặc định trả về vị trí ban đầu
+        transform.position = posStart;
     }
 }
