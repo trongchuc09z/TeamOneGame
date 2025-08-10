@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("You Lose!");
         if (loseSound != null) PlaySound(loseSound);
         EnemyTungTungController.Instance.PlayDetectSequence();
-        gameOverPanel.SetActive(true);
+
     }
 
     public void PlaySound(AudioClip clip)
